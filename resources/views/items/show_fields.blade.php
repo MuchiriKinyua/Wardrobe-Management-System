@@ -31,13 +31,19 @@
 <!-- Brand Field -->
 <div class="col-sm-12">
     {!! Form::label('brand', 'Brand:') !!}
-    <p>{{ $item->brand }}</p>
+    <p>{{ optional($item->brand)->full_name ?? 'N/A' }}</p>
 </div>
 
 <!-- Material Field -->
 <div class="col-sm-12">
     {!! Form::label('material', 'Material:') !!}
     <p>{{ $item->material }}</p>
+</div>
+
+<!-- Day Field -->
+<div class="col-sm-12">
+    {!! Form::label('day', 'Day:') !!}
+    <p>{{ $item->day }}</p>
 </div>
 
 <!-- Show Image -->

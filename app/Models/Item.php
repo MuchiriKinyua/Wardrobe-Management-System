@@ -14,8 +14,9 @@ class Item extends Model
         'cloth_name',
         'color',
         'size',
-        'brand',
-        'material',
+        'brand_id',
+        'condition',
+        'day',
         'image'
     ];
 
@@ -23,8 +24,10 @@ class Item extends Model
         'cloth_name' => 'string',
         'color' => 'string',
         'size' => 'string',
-        'brand' => 'string',
+        'brand_id' => 'integer',
         'material' => 'string',
+        'condition' => 'string',
+        'day' => 'string',
         'image' => 'string'
     ];
 
@@ -34,8 +37,9 @@ class Item extends Model
         'cloth_name' => 'nullable|string|max:100',
         'color' => 'nullable|string|max:100',
         'size' => 'nullable|string|max:100',
-        'brand' => 'nullable|string|max:100',
-        'material' => 'nullable|string|max:100',
+        'brand_id' => 'nullable|string|max:100',
+        'condition' => 'nullable|string|max:100',
+        'day' => 'nullable',
         'image' => 'nullable|string|max:255',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'

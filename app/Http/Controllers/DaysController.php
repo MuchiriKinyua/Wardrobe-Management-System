@@ -8,37 +8,37 @@ class DaysController extends Controller
 {
     public function monday()
     {
-        return view('more/monday');
+        return view('days/monday');
     }
 
     public function tuesday()
     {
-        return view('more/tuesday');
+        return view('days/tuesday');
     }
 
     public function wednesday()
     {
-        return view('more/wednesday');
+        return view('days/wednesday');
     }
 
     public function thursday()
     {
-        return view('more/thursday');
+        return view('days/thursday');
     }
 
     public function friday()
     {
-        return view('more/friday');
+        return view('days/friday');
     }
 
     public function saturday()
     {
-        return view('more/saturday');
+        return view('days/saturday');
     }
 
     public function sunday()
     {
-        return view('more/sunday');
+        return view('days/sunday');
     }
 
 }

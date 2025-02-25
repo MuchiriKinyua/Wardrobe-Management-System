@@ -24,7 +24,6 @@
             <div class="card-body">
                 <div class="row">
                     @include('items.fields')
-                    @include('user.fields', ['users' => $users])
                 </div>
             </div>
 

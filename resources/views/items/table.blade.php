@@ -10,6 +10,8 @@
                 <th>Size</th>
                 <th>Brand</th>
                 <th>Material</th>
+                <th>Condition</th>
+                <th>Days</th>
                 <th>Image</th>
                 <th colspan="3">Action</th>
             </tr>
@@ -20,10 +22,12 @@
                     <td>{{ $item->user->name ?? 'N/A' }}</td>
                     <td>{{ $item->category ? $item->category->full_name : 'N/A' }}</td>
                     <td>{{ $item->cloth_name }}</td>
-                    <td>{{ $item->color }}</td>
+                    <td>{{ $item->color ?? 'N/A' }}</td>
                     <td>{{ $item->size }}</td>
-                    <td>{{ $item->brand }}</td>
+                    <td>{{ optional($item->brand)->full_name ?? 'N/A' }}</td>
                     <td>{{ $item->material }}</td>
+                    <td>{{ $item->condition }}</td>
+                    <td>{{ $item->day ?? 'N/A' }}</td>
                     <td>
                     @if($item->image)
                         <img src="{{ asset('storage/' . $item->image) }}" alt="Item Image" class="img-thumbnail" width="50">

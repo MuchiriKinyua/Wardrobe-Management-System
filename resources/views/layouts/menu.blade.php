@@ -33,12 +33,6 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('sizes.index') }}" class="nav-link {{ Request::is('sizes*') ? 'active' : '' }}">
-                <i class="nav-icon fas fa-ruler text-success"></i>
-                <p>Sizes</p>
-            </a>
-        </li>
-        <li class="nav-item">
             <a href="{{ route('materials.index') }}" class="nav-link {{ Request::is('materials*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-box text-success"></i>
                 <p>Materials</p>
@@ -48,12 +42,6 @@
             <a href="{{ route('conditions.index') }}" class="nav-link {{ Request::is('conditions*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-heart text-success"></i>
                 <p>Conditions</p>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="{{ route('days.index') }}" class="nav-link {{ Request::is('days*') ? 'active' : '' }}">
-                <i class="nav-icon fas fa-calendar-day text-success"></i>
-                <p>Days</p>
             </a>
         </li>
     </ul>

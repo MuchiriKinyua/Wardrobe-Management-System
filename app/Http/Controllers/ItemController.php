@@ -6,6 +6,9 @@ use App\Http\Requests\CreateItemRequest;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Item;
+use App\Models\Material;
+use App\Models\Condition;
+use App\Models\Brand;
 use App\Http\Requests\UpdateItemRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\ItemRepository;
@@ -41,17 +44,22 @@ class ItemController extends AppBaseController
 {
     $item = Item::findOrFail($id);
     $users = User::pluck('name', 'id');
-    $categories = Category::pluck('name', 'id');
+    $categories = Category::pluck('full_name', 'id');
+    $brands = Brand::pluck('full_name', 'id');
+    $conditions = Condition::pluck('full_name', 'id');
 
-    return view('items.edit', compact('item', 'users', 'categories')); 
+    return view('items.edit', compact('item', 'users', 'categories', 'brands', 'conditions')); 
 }
 
 public function create()
 {
     $users = User::pluck('name', 'id');
     $categories = Category::pluck('full_name', 'id');
+    $materials = Material::pluck('full_name', 'id');
+    $brands = Brand::pluck('full_name', 'id');
+    $conditions = Condition::pluck('full_name', 'id');
 
-    return view('items.create', compact('users', 'categories'));
+    return view('items.create', compact('users', 'categories', 'materials', 'brands', 'conditions'));
 }
 
 
