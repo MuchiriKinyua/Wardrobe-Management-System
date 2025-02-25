@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,21 @@ Route::get('/', function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
+
+Route::resource('brands', App\Http\Controllers\BrandController::class);
+Route::resource('categories', App\Http\Controllers\CategoryController::class);
+Route::resource('conditions', App\Http\Controllers\ConditionController::class);
+Route::resource('favorites', App\Http\Controllers\FavoriteController::class);
+Route::resource('histories', App\Http\Controllers\HistoryController::class);
+Route::resource('items', App\Http\Controllers\ItemController::class);
+Route::resource('laundries', App\Http\Controllers\LaundryController::class);
+Route::resource('logs', App\Http\Controllers\LogController::class);
+Route::resource('materials', App\Http\Controllers\MaterialController::class);
+Route::resource('occassions', App\Http\Controllers\OccassionController::class);
+Route::resource('outfits', App\Http\Controllers\OutfitController::class);
+Route::resource('permissions', App\Http\Controllers\PermissionController::class);
+Route::resource('roles', App\Http\Controllers\RoleController::class);
+Route::resource('purchases', App\Http\Controllers\PurchaseController::class);
+Route::resource('sizes', App\Http\Controllers\SizeController::class);
+Route::resource('tags', App\Http\Controllers\TagController::class);
+Route::resource('users', UserController::class);
