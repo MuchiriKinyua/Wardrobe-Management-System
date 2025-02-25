@@ -39,3 +39,4 @@ Route::resource('purchases', App\Http\Controllers\PurchaseController::class);
 Route::resource('sizes', App\Http\Controllers\SizeController::class);
 Route::resource('tags', App\Http\Controllers\TagController::class);
 Route::resource('users', UserController::class);
+Route::resource('days', App\Http\Controllers\daysController::class);

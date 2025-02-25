@@ -5,8 +5,8 @@
     </a>
 </li>
 
-<li class="nav-item has-treeview {{ Request::is('categories*') || Request::is('items*') || Request::is('brands*') || Request::is('sizes*') || Request::is('materials*') || Request::is('conditions*') ? 'menu-open' : '' }}">
-    <a href="#" class="nav-link {{ Request::is('categories*') || Request::is('items*') || Request::is('brands*') || Request::is('sizes*') || Request::is('materials*') || Request::is('conditions*') ? 'active' : '' }}">
+<li class="nav-item has-treeview {{ Request::is('categories*') || Request::is('items*') || Request::is('days*') || Request::is('brands*') || Request::is('sizes*') || Request::is('materials*') || Request::is('conditions*') ? 'menu-open' : '' }}">
+    <a href="#" class="nav-link {{ Request::is('categories*') || Request::is('items*') || Request::is('days*') || Request::is('brands*') || Request::is('sizes*') || Request::is('materials*') || Request::is('conditions*') ? 'active' : '' }}">
         <i class="nav-icon fas fa-tshirt text-orange"></i>
         <p>
             Clothing Management
@@ -48,6 +48,12 @@
             <a href="{{ route('conditions.index') }}" class="nav-link {{ Request::is('conditions*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-heart text-success"></i>
                 <p>Conditions</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ route('days.index') }}" class="nav-link {{ Request::is('days*') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-calendar-day text-success"></i>
+                <p>Days</p>
             </a>
         </li>
     </ul>
@@ -180,3 +186,5 @@
         </li>
     </ul>
 </li>
+
+
