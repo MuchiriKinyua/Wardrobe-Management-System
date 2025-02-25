@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DaysController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,3 +41,11 @@ Route::resource('sizes', App\Http\Controllers\SizeController::class);
 Route::resource('tags', App\Http\Controllers\TagController::class);
 Route::resource('users', UserController::class);
 Route::resource('days', App\Http\Controllers\daysController::class);
+Route::get('monday', [DaysController::class, 'monday']);
+Route::get('tuesday', [DaysController::class, 'tuesday']);
+Route::get('wednesday', [DaysController::class, 'wednesday']);
+Route::get('thursday', [DaysController::class, 'thursday']);
+Route::get('friday', [DaysController::class, 'friday']);
+Route::get('saturday', [DaysController::class, 'saturday']);
+Route::get('sunday', [DaysController::class, 'sunday']);
+

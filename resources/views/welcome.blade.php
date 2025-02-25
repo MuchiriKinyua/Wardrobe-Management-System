@@ -55,33 +55,34 @@
     </header>
     
     <section class="container mt-5">
-        <div class="row">
-            @php
-                $outfits = [
-                    'Monday' => 'monday.jpg',
-                    'Tuesday' => 'tuesday.jpg',
-                    'Wednesday' => 'wednesday.jpg',
-                    'Thursday' => 'thursday.jpg',
-                    'Friday' => 'friday.jpg',
-                    'Saturday' => 'saturday.jpg',
-                    'Sunday' => 'sunday.jpg'
-                ];
-            @endphp
+    <div class="row">
+        @php
+            $outfits = [
+                'Monday' => 'monday.jpg',
+                'Tuesday' => 'tuesday.jpg',
+                'Wednesday' => 'wednesday.jpg',
+                'Thursday' => 'thursday.jpg',
+                'Friday' => 'friday.jpg',
+                'Saturday' => 'saturday.jpg',
+                'Sunday' => 'sunday.jpg'
+            ];
+        @endphp
 
-            @foreach($outfits as $day => $image)
-                <div class="col-md-4 mb-4">
-                    <div class="card outfit-card">
-                        <img height="400px" src="{{ asset('img/' . $image) }}" class="card-img-top" alt="{{ $day }} Outfit">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">{{ $day }} Outfit</h5>
-                            <p class="card-text">Choose a stylish look for {{ $day }}.</p>
-                            <a href="#" class="btn btn-primary">View Options</a>
-                        </div>
+        @foreach($outfits as $day => $image)
+            <div class="col-md-4 mb-4">
+                <div class="card outfit-card">
+                    <img height="400px" src="{{ asset('img/' . $image) }}" class="card-img-top" alt="{{ $day }} Outfit">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{ $day }} Outfit</h5>
+                        <p class="card-text">Choose a stylish look for {{ $day }}.</p>
+                        <a href="{{ url('/' . strtolower($day)) }}" class="btn btn-primary">View Options</a>
                     </div>
                 </div>
-            @endforeach
-        </div>
-    </section>
+            </div>
+        @endforeach
+    </div>
+</section>
+
     
     <footer class="bg-dark text-white text-center p-3 mt-5">
         <p>&copy; Made with <span style="color: red;">❤️</span> by Muchiri Kinyua</p>
