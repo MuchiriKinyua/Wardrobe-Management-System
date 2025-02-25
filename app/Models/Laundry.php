@@ -28,8 +28,8 @@ class Laundry extends Model
         'washed_at' => 'nullable',
         'detergent_used' => 'nullable|string|max:100',
         'notes' => 'nullable|string|max:600',
-        'created_at' => 'required',
-        'updated_at' => 'required'
+        'created_at' => 'nullable',
+        'updated_at' => 'nullable'
     ];
 
     public function clothingItem(): \Illuminate\Database\Eloquent\Relations\BelongsTo

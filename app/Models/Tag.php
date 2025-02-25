@@ -20,8 +20,8 @@ class Tag extends Model
     public static array $rules = [
         'user_id' => 'nullable',
         'full_name' => 'nullable|string|max:100',
-        'created_at' => 'required',
-        'updated_at' => 'required'
+        'created_at' => 'nullable',
+        'updated_at' => 'nullable'
     ];
 
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo

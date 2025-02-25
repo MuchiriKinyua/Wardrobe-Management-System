@@ -28,8 +28,8 @@ class Purchase extends Model
         'price' => 'nullable|string|max:100',
         'purchased_at' => 'nullable|string|max:100',
         'store' => 'nullable|string|max:100',
-        'created_at' => 'required',
-        'updated_at' => 'required'
+        'created_at' => 'nullable',
+        'updated_at' => 'nullable'
     ];
 
     public function clothingItem(): \Illuminate\Database\Eloquent\Relations\BelongsTo

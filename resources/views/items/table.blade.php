@@ -3,9 +3,9 @@
         <table class="table" id="items-table">
             <thead>
             <tr>
-                <th>User Id</th>
-                <th>Category Id</th>
-                <th>Full Name</th>
+                <th>User</th>
+                <th>Category</th>
+                <th>Cloth Name</th>
                 <th>Color</th>
                 <th>Size</th>
                 <th>Brand</th>
@@ -17,14 +17,21 @@
             <tbody>
             @foreach($items as $item)
                 <tr>
-                    <td>{{ $item->user_id }}</td>
-                    <td>{{ $item->category_id }}</td>
-                    <td>{{ $item->full_name }}</td>
+                    <td>{{ $item->user->name ?? 'N/A' }}</td>
+                    <td>{{ $item->category ? $item->category->full_name : 'N/A' }}</td>
+                    <td>{{ $item->cloth_name }}</td>
                     <td>{{ $item->color }}</td>
                     <td>{{ $item->size }}</td>
                     <td>{{ $item->brand }}</td>
                     <td>{{ $item->material }}</td>
-                    <td>{{ $item->image }}</td>
+                    <td>
+                    @if($item->image)
+                        <img src="{{ asset('storage/' . $item->image) }}" alt="Item Image" class="img-thumbnail" width="50">
+                    @else
+                        No Image
+                    @endif
+                    </td>
+
                     <td  style="width: 120px">
                         {!! Form::open(['route' => ['items.destroy', $item->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>

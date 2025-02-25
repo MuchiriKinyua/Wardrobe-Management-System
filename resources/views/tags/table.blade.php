@@ -3,7 +3,7 @@
         <table class="table" id="tags-table">
             <thead>
             <tr>
-                <th>User Id</th>
+                <th>User</th>
                 <th>Full Name</th>
                 <th colspan="3">Action</th>
             </tr>

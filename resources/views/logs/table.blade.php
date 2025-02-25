@@ -3,7 +3,7 @@
         <table class="table" id="logs-table">
             <thead>
             <tr>
-                <th>User Id</th>
+                <th>User</th>
                 <th>Action</th>
                 <th>Table Name</th>
                 <th colspan="3">Action</th>

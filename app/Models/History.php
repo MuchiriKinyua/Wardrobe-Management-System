@@ -18,8 +18,8 @@ class History extends Model
 
     public static array $rules = [
         'clothing_item_id' => 'nullable',
-        'created_at' => 'required',
-        'updated_at' => 'required'
+        'created_at' => 'nullable',
+        'updated_at' => 'nullable'
     ];
 
     public function clothingItem(): \Illuminate\Database\Eloquent\Relations\BelongsTo

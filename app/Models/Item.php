@@ -11,7 +11,7 @@ class Item extends Model
     public $fillable = [
         'user_id',
         'category_id',
-        'full_name',
+        'cloth_name',
         'color',
         'size',
         'brand',
@@ -20,7 +20,7 @@ class Item extends Model
     ];
 
     protected $casts = [
-        'full_name' => 'string',
+        'cloth_name' => 'string',
         'color' => 'string',
         'size' => 'string',
         'brand' => 'string',
@@ -31,14 +31,14 @@ class Item extends Model
     public static array $rules = [
         'user_id' => 'nullable',
         'category_id' => 'nullable',
-        'full_name' => 'nullable|string|max:100',
+        'cloth_name' => 'nullable|string|max:100',
         'color' => 'nullable|string|max:100',
         'size' => 'nullable|string|max:100',
         'brand' => 'nullable|string|max:100',
         'material' => 'nullable|string|max:100',
         'image' => 'nullable|string|max:255',
-        'created_at' => 'required',
-        'updated_at' => 'required'
+        'created_at' => 'nullable',
+        'updated_at' => 'nullable'
     ];
 
     public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo

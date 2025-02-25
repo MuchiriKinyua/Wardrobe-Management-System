@@ -3,7 +3,7 @@
         <table class="table" id="histories-table">
             <thead>
             <tr>
-                <th>Clothing Item Id</th>
+                <th>Clothing Item</th>
                 <th colspan="3">Action</th>
             </tr>
             </thead>

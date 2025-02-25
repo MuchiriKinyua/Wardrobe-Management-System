@@ -3,8 +3,8 @@
         <table class="table" id="laundries-table">
             <thead>
             <tr>
-                <th>User Id</th>
-                <th>Clothing Item Id</th>
+                <th>User</th>
+                <th>Clothing Item</th>
                 <th>Washed At</th>
                 <th>Detergent Used</th>
                 <th>Notes</th>

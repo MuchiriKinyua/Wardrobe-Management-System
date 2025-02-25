@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateItemRequest;
+use App\Models\User;
+use App\Models\Category;
+use App\Models\Item;
 use App\Http\Requests\UpdateItemRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\ItemRepository;
@@ -33,24 +36,46 @@ class ItemController extends AppBaseController
     /**
      * Show the form for creating a new Item.
      */
-    public function create()
-    {
-        return view('items.create');
-    }
+
+    public function edit($id)
+{
+    $item = Item::findOrFail($id);
+    $users = User::pluck('name', 'id');
+    $categories = Category::pluck('name', 'id');
+
+    return view('items.edit', compact('item', 'users', 'categories')); 
+}
+
+public function create()
+{
+    $users = User::pluck('name', 'id');
+    $categories = Category::pluck('full_name', 'id');
+
+    return view('items.create', compact('users', 'categories'));
+}
+
 
     /**
      * Store a newly created Item in storage.
      */
-    public function store(CreateItemRequest $request)
-    {
-        $input = $request->all();
+    public function store(Request $request)
+{
+    $request->validate([
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
 
-        $item = $this->itemRepository->create($input);
+    $data = $request->all();
 
-        Flash::success('Item saved successfully.');
-
-        return redirect(route('items.index'));
+    if ($request->hasFile('image')) {
+        $imagePath = $request->file('image')->store('images', 'public'); // Store in storage/app/public/images
+        $data['image'] = $imagePath; // Save image path in the database
     }
+
+    Item::create($data);
+
+    return redirect()->route('items.index')->with('success', 'Item created successfully.');
+}
+
 
     /**
      * Display the specified Item.
@@ -71,38 +96,34 @@ class ItemController extends AppBaseController
     /**
      * Show the form for editing the specified Item.
      */
-    public function edit($id)
-    {
-        $item = $this->itemRepository->find($id);
-
-        if (empty($item)) {
-            Flash::error('Item not found');
-
-            return redirect(route('items.index'));
-        }
-
-        return view('items.edit')->with('item', $item);
-    }
 
     /**
      * Update the specified Item in storage.
      */
-    public function update($id, UpdateItemRequest $request)
-    {
-        $item = $this->itemRepository->find($id);
+    public function update(Request $request, $id)
+{
+    $request->validate([
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
 
-        if (empty($item)) {
-            Flash::error('Item not found');
+    $item = Item::findOrFail($id);
+    $data = $request->all();
 
-            return redirect(route('items.index'));
+    if ($request->hasFile('image')) {
+        // Delete old image if exists
+        if ($item->image) {
+            Storage::disk('public')->delete($item->image);
         }
 
-        $item = $this->itemRepository->update($request->all(), $id);
-
-        Flash::success('Item updated successfully.');
-
-        return redirect(route('items.index'));
+        $imagePath = $request->file('image')->store('images', 'public');
+        $data['image'] = $imagePath;
     }
+
+    $item->update($data);
+
+    return redirect()->route('items.index')->with('success', 'Item updated successfully.');
+}
+
 
     /**
      * Remove the specified Item from storage.

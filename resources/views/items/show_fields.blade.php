@@ -1,19 +1,19 @@
-<!-- User Id Field -->
+<!-- User Field -->
 <div class="col-sm-12">
-    {!! Form::label('user_id', 'User Id:') !!}
-    <p>{{ $item->user_id }}</p>
+    {!! Form::label('user_id', 'User:') !!}
+    <p>{{ $item->user->name ?? 'N/A' }}</p>
 </div>
 
 <!-- Category Id Field -->
 <div class="col-sm-12">
-    {!! Form::label('category_id', 'Category Id:') !!}
-    <p>{{ $item->category_id }}</p>
+    {!! Form::label('category_id', 'Category:') !!}
+    <p>{{ $item->category->full_name }}</p>
 </div>
 
-<!-- Full Name Field -->
+<!-- Cloth Name Field -->
 <div class="col-sm-12">
-    {!! Form::label('full_name', 'Full Name:') !!}
-    <p>{{ $item->full_name }}</p>
+    {!! Form::label('cloth_name', 'Cloth Name:') !!}
+    <p>{{ $item->cloth_name }}</p>
 </div>
 
 <!-- Color Field -->
@@ -40,9 +40,15 @@
     <p>{{ $item->material }}</p>
 </div>
 
-<!-- Image Field -->
+<!-- Show Image -->
 <div class="col-sm-12">
     {!! Form::label('image', 'Image:') !!}
-    <p>{{ $item->image }}</p>
+    @if($item->image)
+        <br>
+        <img src="{{ asset('storage/' . $item->image) }}" alt="Item Image" class="img-thumbnail" width="150">
+    @else
+        <p>No Image Uploaded</p>
+    @endif
 </div>
+
 
