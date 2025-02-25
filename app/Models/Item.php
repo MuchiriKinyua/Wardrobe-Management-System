@@ -15,7 +15,8 @@ class Item extends Model
         'color',
         'size',
         'brand_id',
-        'condition',
+        'material_id',
+        'condition_id',
         'day',
         'image'
     ];
@@ -25,8 +26,8 @@ class Item extends Model
         'color' => 'string',
         'size' => 'string',
         'brand_id' => 'integer',
-        'material' => 'string',
-        'condition' => 'string',
+        'material_id' => 'integer',
+        'condition_id' => 'integer',
         'day' => 'string',
         'image' => 'string'
     ];
@@ -38,7 +39,8 @@ class Item extends Model
         'color' => 'nullable|string|max:100',
         'size' => 'nullable|string|max:100',
         'brand_id' => 'nullable|string|max:100',
-        'condition' => 'nullable|string|max:100',
+        'material_id' => 'nullable|string|max:100',
+        'condition_id' => 'nullable|integer|max:100',
         'day' => 'nullable',
         'image' => 'nullable|string|max:255',
         'created_at' => 'nullable',
@@ -74,4 +76,20 @@ class Item extends Model
     {
         return $this->hasMany(\App\Models\Purchase::class, 'clothing_item_id');
     }
+
+    public function brand()
+    {
+    return $this->belongsTo(Brand::class, 'brand_id');
+    }
+
+    public function material()
+    {
+    return $this->belongsTo(Material::class, 'material_id');
+    }
+
+    public function condition()
+    {
+    return $this->belongsTo(Condition::class, 'condition_id');
+    }
+
 }

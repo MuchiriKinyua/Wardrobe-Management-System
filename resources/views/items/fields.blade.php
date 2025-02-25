@@ -45,13 +45,13 @@
 <!-- Material Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('material', 'Material:') !!}
-    {!! Form::select('material', $materials, null, ['class' => 'form-control', 'placeholder' => 'Select a Material']) !!}
+    {!! Form::select('material_id', $materials, null, ['class' => 'form-control', 'placeholder' => 'Select a Material']) !!}
 </div>
 
 <!-- Condition Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('condition', 'Condition:') !!}
-    {!! Form::select('condition', $conditions, null, ['class' => 'form-control', 'placeholder' => 'Select a Condition']) !!}
+    {!! Form::select('condition_id', $conditions, null, ['class' => 'form-control', 'placeholder' => 'Select a Condition']) !!}
 </div>
 
 <!-- Days Field -->

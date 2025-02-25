@@ -37,7 +37,13 @@
 <!-- Material Field -->
 <div class="col-sm-12">
     {!! Form::label('material', 'Material:') !!}
-    <p>{{ $item->material }}</p>
+    <p>{{ optional($item->material)->full_name ?? 'N/A' }}</p>
+</div>
+
+<!-- Condition Field -->
+<div class="col-sm-12">
+    {!! Form::label('condition', 'Condition:') !!}
+    <p>{{ optional($item->condition)->full_name ?? 'N/A' }}</p>
 </div>
 
 <!-- Day Field -->

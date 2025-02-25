@@ -47,8 +47,9 @@ class ItemController extends AppBaseController
     $categories = Category::pluck('full_name', 'id');
     $brands = Brand::pluck('full_name', 'id');
     $conditions = Condition::pluck('full_name', 'id');
+    $materials = Material::pluck('full_name', 'id');
 
-    return view('items.edit', compact('item', 'users', 'categories', 'brands', 'conditions')); 
+    return view('items.edit', compact('item', 'users', 'categories', 'brands', 'conditions', 'materials')); 
 }
 
 public function create()

@@ -25,8 +25,8 @@
                     <td>{{ $item->color ?? 'N/A' }}</td>
                     <td>{{ $item->size }}</td>
                     <td>{{ optional($item->brand)->full_name ?? 'N/A' }}</td>
-                    <td>{{ $item->material }}</td>
-                    <td>{{ $item->condition }}</td>
+                    <td>{{ optional($item->material)->full_name ?? 'N/A' }}</td>
+                    <td>{{ optional($item->condition)->full_name ?? 'N/A' }}</td>
                     <td>{{ $item->day ?? 'N/A' }}</td>
                     <td>
                     @if($item->image)
