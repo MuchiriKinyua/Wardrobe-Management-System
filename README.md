@@ -1,14 +1,19 @@
 # Wardrobe Management System
 
+![Screenshot from 2025-02-26 14-30-59](https://github.com/user-attachments/assets/c891533e-fa87-416a-8e61-ca2f029377ad)
+
 # Overview
 
 The Wardrobe Management System is a web-based application designed to help users efficiently organize their clothing items and plan outfits for each day of the week. It allows users to manage their wardrobe digitally, track their clothing history, and log interactions such as adding, updating, and wearing clothes.
+
+![Screenshot from 2025-02-26 14-32-47](https://github.com/user-attachments/assets/2bd0826c-6fac-4b26-a10e-9ee16cc040e4)
 
 # Features
 
 User Authentication: Secure login and registration.
 
 # Clothing Management:
+![Screenshot from 2025-02-26 14-31-14](https://github.com/user-attachments/assets/4b4ae4aa-d958-4f3d-b0bb-0ae95a306fe0)
 
 Add, edit, and delete clothing items.
 
@@ -34,19 +39,9 @@ Items belong to users and categories.
 
 Tracks purchases, laundries, and usage history.
 
-# Technologies Used
+![Screenshot from 2025-02-26 14-31-28](https://github.com/user-attachments/assets/0306b85c-665b-4d02-981f-7fb51147e9c7)
 
-Backend: Laravel (PHP Framework)
-
-Frontend: Blade Templates, Bootstrap
-
-Database: MySQL (InnoDB Engine)
-
-Storage: Public Storage for Image Uploads
-
-Database Schema
-
-Tables & Relationships
+# Other Features
 
 users: Stores user information.
 
@@ -60,11 +55,28 @@ logs: Tracks user actions.
 
 histories: Stores past clothing interactions.
 
-laundries: Logs washing details.
-
 favorites: Allows users to favorite items.
 
 purchases: Tracks purchased clothing.
+
+laundries: Logs washing details.
+
+![Screenshot from 2025-02-26 14-32-23](https://github.com/user-attachments/assets/eb7a3002-7bae-4fbc-8292-f86909df675a)
+
+
+# Technologies Used
+
+Backend: Laravel (PHP Framework)
+
+Frontend: Blade Templates, Bootstrap
+
+Database: MySQL (InnoDB Engine)
+
+![Screenshot from 2025-02-26 14-48-51](https://github.com/user-attachments/assets/47cf164a-3af1-4702-b14e-08715225e1a4)
+
+Storage: Public Storage for Image Uploads
+
+Database Schema: Tables & Relationships
 
 # Installation Guide
 
@@ -108,6 +120,10 @@ Open the application in a browser:
 
 http://127.0.0.1:8000
 
+# Login Credentials:
+email: admin@gmail.com
+password: 12345678
+
 # Usage
 
 Adding Clothing Items:
@@ -126,37 +142,9 @@ Edit or delete items.
 
 Log wear and wash actions.
 
-# API Endpoints (If Applicable)
-
-Method
-
-Endpoint
-
-Description
-
-GET
-
-/api/items
-
-Fetch all wardrobe items
-
-POST
-
-/api/items
-
-Add a new clothing item
-
-PUT
-
-/api/items/{id}
-
-Update an item
-
-DELETE
-
-/api/items/{id}
-
-Delete an item
+# N/B: 
+     email: admin@gmail.com
+     password: 12345678
 
 # Future Enhancements
 
