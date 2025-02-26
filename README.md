@@ -142,6 +142,8 @@ Edit or delete items.
 
 Log wear and wash actions.
 
+![Screenshot from 2025-02-26 14-45-36](https://github.com/user-attachments/assets/3cb202a4-493b-4c4e-9cfe-fe9764c798e2)
+
 # N/B: 
      email: admin@gmail.com
      password: 12345678
