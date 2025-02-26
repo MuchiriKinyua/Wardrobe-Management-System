@@ -72,7 +72,8 @@ Steps to Install
 
 Clone the repository:
 
-git clone https://github.com/MuchiriKinyua/Wardrobe-Management-System
+    git clone https://github.com/MuchiriKinyua/Wardrobe-Management-System
+
 cd Wardrobe-Management-System
 
 Use the sql db I have provided in the parent folder called Wardrobe-Management-System.sql
