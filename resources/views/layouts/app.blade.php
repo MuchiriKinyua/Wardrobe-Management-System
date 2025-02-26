@@ -52,6 +52,11 @@
             <div class="content-wrapper">
                 @yield('content')
             </div>
+
+            <footer class="bg-dark text-white text-center p-3 mt-5">
+                <p>&copy; Made with <span style="color: red;">❤️</span> by Muchiri Kinyua</p>
+            </footer>
+
         </div>
     </body>
 </x-laravel-ui-adminlte::adminlte-layout>
