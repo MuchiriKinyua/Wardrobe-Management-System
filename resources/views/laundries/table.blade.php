@@ -14,8 +14,8 @@
             <tbody>
             @foreach($laundries as $laundry)
                 <tr>
-                    <td>{{ $laundry->user_id }}</td>
-                    <td>{{ $laundry->clothing_item_id }}</td>
+                    <td>{{ optional($laundry->user)->name ?? 'N/A' }}</td>
+                    <td>{{ optional($laundry->item)->cloth_name ?? 'N/A' }}</td>
                     <td>{{ $laundry->washed_at }}</td>
                     <td>{{ $laundry->detergent_used }}</td>
                     <td>{{ $laundry->notes }}</td>

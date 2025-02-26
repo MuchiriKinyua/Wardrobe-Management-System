@@ -32,9 +32,9 @@ class Purchase extends Model
         'updated_at' => 'nullable'
     ];
 
-    public function clothingItem(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function item()
     {
-        return $this->belongsTo(\App\Models\Item::class, 'clothing_item_id');
+        return $this->belongsTo(Item::class, 'clothing_item_id');
     }
 
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo

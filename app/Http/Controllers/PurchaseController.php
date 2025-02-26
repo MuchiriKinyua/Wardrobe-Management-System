@@ -7,6 +7,8 @@ use App\Http\Requests\UpdatePurchaseRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\PurchaseRepository;
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Item;
 use Flash;
 
 class PurchaseController extends AppBaseController
@@ -35,7 +37,10 @@ class PurchaseController extends AppBaseController
      */
     public function create()
     {
-        return view('purchases.create');
+        $users = User::pluck('name', 'id');
+        $clothing_items = Item::pluck('cloth_name', 'id');
+
+        return view('laundries.create', compact('users', 'clothing_items'));
     }
 
     /**

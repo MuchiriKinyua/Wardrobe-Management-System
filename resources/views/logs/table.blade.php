@@ -4,7 +4,7 @@
             <thead>
             <tr>
                 <th>User</th>
-                <th>Action</th>
+                <th>Usage</th>
                 <th>Table Name</th>
                 <th colspan="3">Action</th>
             </tr>
@@ -12,7 +12,7 @@
             <tbody>
             @foreach($logs as $log)
                 <tr>
-                    <td>{{ $log->user_id }}</td>
+                    <td>{{ optional($log->user)->name ?? 'N/A' }}</td>
                     <td>{{ $log->action }}</td>
                     <td>{{ $log->table_name }}</td>
                     <td  style="width: 120px">

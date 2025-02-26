@@ -26,7 +26,12 @@
     'Green' => 'Green',
     'Blue' => 'Blue',
     'Indigo' => 'Indigo',
-    'Violet' => 'Violet'
+    'Violet' => 'Violet',
+    'White' => 'White',
+    'Black' => 'Black',
+    'Brown' => 'Brown',
+    'Grey' => 'Grey',
+    'Purple' => 'Purple'
     ], null, ['class' => 'form-control', 'placeholder' => 'Select a Color']) !!}
 </div>
 

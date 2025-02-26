@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateLogRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\LogRepository;
 use Illuminate\Http\Request;
+use App\Models\User;
 use Flash;
 
 class LogController extends AppBaseController
@@ -35,7 +36,9 @@ class LogController extends AppBaseController
      */
     public function create()
     {
-        return view('logs.create');
+        $users = User::pluck('name', 'id');
+
+        return view('logs.create', compact('users'));
     }
 
     /**

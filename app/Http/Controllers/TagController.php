@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateTagRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\TagRepository;
 use Illuminate\Http\Request;
+use App\Models\User;
 use Flash;
 
 class TagController extends AppBaseController
@@ -35,7 +36,9 @@ class TagController extends AppBaseController
      */
     public function create()
     {
-        return view('tags.create');
+        $users = User::pluck('name', 'id');
+
+        return view('tags.create', compact('users'));
     }
 
     /**

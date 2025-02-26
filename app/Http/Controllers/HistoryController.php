@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateHistoryRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\HistoryRepository;
 use Illuminate\Http\Request;
+use App\Models\Item;
 use Flash;
 
 class HistoryController extends AppBaseController
@@ -34,8 +35,10 @@ class HistoryController extends AppBaseController
      * Show the form for creating a new History.
      */
     public function create()
-    {
-        return view('histories.create');
+    {   
+        $clothing_items = Item::pluck('cloth_name', 'id');
+
+        return view('histories.create', compact('clothing_items'));
     }
 
     /**

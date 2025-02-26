@@ -7,6 +7,8 @@ use App\Http\Requests\UpdateLaundryRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\LaundryRepository;
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Item;
 use Flash;
 
 class LaundryController extends AppBaseController
@@ -35,7 +37,10 @@ class LaundryController extends AppBaseController
      */
     public function create()
     {
-        return view('laundries.create');
+        $users = User::pluck('name', 'id');
+        $clothing_items = Item::pluck('cloth_name', 'id');
+
+        return view('laundries.create', compact('users', 'clothing_items'));
     }
 
     /**

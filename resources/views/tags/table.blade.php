@@ -11,7 +11,7 @@
             <tbody>
             @foreach($tags as $tag)
                 <tr>
-                    <td>{{ $tag->user_id }}</td>
+                    <td>{{ optional($tag->user)->name ?? 'N/A' }}</td>
                     <td>{{ $tag->full_name }}</td>
                     <td  style="width: 120px">
                         {!! Form::open(['route' => ['tags.destroy', $tag->id], 'method' => 'delete']) !!}

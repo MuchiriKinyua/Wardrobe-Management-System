@@ -14,7 +14,7 @@
             <tbody>
             @foreach($purchases as $purchase)
                 <tr>
-                    <td>{{ $purchase->user_id }}</td>
+                    <td>{{ optional($purchase->user)->name ?? 'N/A' }}</td>
                     <td>{{ $purchase->clothing_item_id }}</td>
                     <td>{{ $purchase->price }}</td>
                     <td>{{ $purchase->purchased_at }}</td>

@@ -10,7 +10,7 @@
             <tbody>
             @foreach($favorites as $favorite)
                 <tr>
-                    <td>{{ $favorite->clothing_item_id }}</td>
+                    <td>{{ optional($favorite->item)->cloth_name ?? 'N/A' }}</td>
                     <td  style="width: 120px">
                         {!! Form::open(['route' => ['favorites.destroy', $favorite->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>

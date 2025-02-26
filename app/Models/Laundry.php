@@ -24,7 +24,7 @@ class Laundry extends Model
 
     public static array $rules = [
         'user_id' => 'nullable',
-        'clothing_item_id' => 'nullable',
+        'clothing_item_id' => 'nullable|exists:items,id',
         'washed_at' => 'nullable',
         'detergent_used' => 'nullable|string|max:100',
         'notes' => 'nullable|string|max:600',
@@ -32,9 +32,9 @@ class Laundry extends Model
         'updated_at' => 'nullable'
     ];
 
-    public function clothingItem(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function item()
     {
-        return $this->belongsTo(\App\Models\Item::class, 'clothing_item_id');
+        return $this->belongsTo(Item::class, 'clothing_item_id');
     }
 
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo

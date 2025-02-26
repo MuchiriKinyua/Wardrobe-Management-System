@@ -1,20 +1,20 @@
 <!-- User Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('user_id', 'User Id:') !!}
-    {!! Form::number('user_id', null, ['class' => 'form-control']) !!}
+    {!! Form::label('user_id', 'User:') !!}
+    {!! Form::select('user_id', $users, null, ['class' => 'form-control', 'placeholder' => 'Select a User']) !!}
 </div>
 
 <!-- Clothing Item Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('clothing_item_id', 'Clothing Item Id:') !!}
-    {!! Form::number('clothing_item_id', null, ['class' => 'form-control']) !!}
+    {!! Form::label('clothing_item_id', 'Clothing Item:') !!}
+    {!! Form::select('clothing_item_id', $clothing_items, null, ['class' => 'form-control', 'placeholder' => 'Select a Cloth']) !!}
 </div>
 
 <!-- Washed At Field -->
-<div class="form-group col-sm-6">
+<!-- <div class="form-group col-sm-6">
     {!! Form::label('washed_at', 'Washed At:') !!}
     {!! Form::text('washed_at', null, ['class' => 'form-control','id'=>'washed_at']) !!}
-</div>
+</div> -->
 
 @push('page_scripts')
     <script type="text/javascript">

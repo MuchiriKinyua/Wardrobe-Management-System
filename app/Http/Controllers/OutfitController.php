@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateOutfitRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\OutfitRepository;
 use Illuminate\Http\Request;
+use App\Models\User;
 use Flash;
 
 class OutfitController extends AppBaseController
@@ -35,7 +36,9 @@ class OutfitController extends AppBaseController
      */
     public function create()
     {
-        return view('outfits.create');
+        $users = User::pluck('name', 'id');
+
+        return view('outfits.create', compact('users'));
     }
 
     /**

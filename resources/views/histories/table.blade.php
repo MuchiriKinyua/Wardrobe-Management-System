@@ -10,7 +10,7 @@
             <tbody>
             @foreach($histories as $history)
                 <tr>
-                    <td>{{ $history->clothing_item_id }}</td>
+                    <td>{{ optional($history->item)->cloth_name ?? 'N/A' }}</td>
                     <td  style="width: 120px">
                         {!! Form::open(['route' => ['histories.destroy', $history->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>

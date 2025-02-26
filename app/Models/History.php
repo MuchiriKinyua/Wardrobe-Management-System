@@ -17,13 +17,13 @@ class History extends Model
     ];
 
     public static array $rules = [
-        'clothing_item_id' => 'nullable',
+        'clothing_item_id' => 'nullable|exists:items,id',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'
     ];
 
-    public function clothingItem(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function item()
     {
-        return $this->belongsTo(\App\Models\Item::class, 'clothing_item_id');
+        return $this->belongsTo(Item::class, 'clothing_item_id');
     }
 }

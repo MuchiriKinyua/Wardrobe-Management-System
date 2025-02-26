@@ -1,13 +1,13 @@
 <!-- User Id Field -->
 <div class="col-sm-12">
-    {!! Form::label('user_id', 'User Id:') !!}
-    <p>{{ $purchase->user_id }}</p>
+    {!! Form::label('user_id', 'User:') !!}
+    <p>{{ $item->user->name ?? 'N/A' }}</p>
 </div>
 
 <!-- Clothing Item Id Field -->
 <div class="col-sm-12">
-    {!! Form::label('clothing_item_id', 'Clothing Item Id:') !!}
-    <p>{{ $purchase->clothing_item_id }}</p>
+    {!! Form::label('clothing_item_id', 'Clothing Item:') !!}
+    <td>{{ optional($purchase->item)->cloth_name ?? 'N/A' }}</td>
 </div>
 
 <!-- Price Field -->

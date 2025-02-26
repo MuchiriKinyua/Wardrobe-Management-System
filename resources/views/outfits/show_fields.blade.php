@@ -1,7 +1,7 @@
 <!-- User Id Field -->
 <div class="col-sm-12">
-    {!! Form::label('user_id', 'User Id:') !!}
-    <p>{{ $outfit->user_id }}</p>
+    {!! Form::label('user_id', 'User:') !!}
+    <td>{{ optional($item->user)->name ?? 'N/A' }}</td>
 </div>
 
 <!-- Full Name Field -->

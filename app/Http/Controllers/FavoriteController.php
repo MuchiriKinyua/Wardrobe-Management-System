@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateFavoriteRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\FavoriteRepository;
 use Illuminate\Http\Request;
+use App\Models\Item;
 use Flash;
 
 class FavoriteController extends AppBaseController
@@ -34,8 +35,10 @@ class FavoriteController extends AppBaseController
      * Show the form for creating a new Favorite.
      */
     public function create()
-    {
-        return view('favorites.create');
+    {   
+        $clothing_items = Item::pluck('cloth_name', 'id');
+
+        return view('favorites.create', compact('clothing_items'));
     }
 
     /**

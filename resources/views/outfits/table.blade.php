@@ -11,7 +11,7 @@
             <tbody>
             @foreach($outfits as $outfit)
                 <tr>
-                    <td>{{ $outfit->user_id }}</td>
+                    <td>{{ optional($outfit->user)->name ?? 'N/A' }}</td>
                     <td>{{ $outfit->full_name }}</td>
                     <td  style="width: 120px">
                         {!! Form::open(['route' => ['outfits.destroy', $outfit->id], 'method' => 'delete']) !!}
