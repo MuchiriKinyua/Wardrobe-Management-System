@@ -80,29 +80,29 @@ Use the sql db I have provided in the parent folder called Wardrobe-Management-S
 
 Install dependencies:
 
-composer install
+    composer install
 
 Configure environment file:
 
-cp .env.example .env
+    cp .env.example .env
 
 Update database credentials in .env.
 
 Generate application key:
 
-php artisan key:generate
+    php artisan key:generate
 
 Run migrations:
 
-php artisan migrate --seed
+    php artisan migrate --seed
 
 Link storage for images:
 
-php artisan storage:link
+    php artisan storage:link
 
 Start the development server:
 
-php artisan serve
+    php artisan serve
 
 Open the application in a browser:
 
