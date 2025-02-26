@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Item extends Model
 {
@@ -47,6 +48,44 @@ class Item extends Model
         'updated_at' => 'nullable'
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($item) {
+            Log::create([
+                'user_id' => Auth::id(),
+                'item_id' => $item->id,
+                'category' => 'Add',
+                'action' => 'Added new item',
+                'description' => 'Item created: ' . $item->cloth_name,
+                'table_name' => 'items',
+            ]);
+        });
+
+        static::updated(function ($item) {
+            Log::create([
+                'user_id' => Auth::id(),
+                'item_id' => $item->id,
+                'category' => 'Update',
+                'action' => 'Updated item',
+                'description' => 'Item updated: ' . $item->cloth_name,
+                'table_name' => 'items',
+            ]);
+        });
+
+        static::deleted(function ($item) {
+            Log::create([
+                'user_id' => Auth::id(),
+                'item_id' => $item->id,
+                'category' => 'Delete',
+                'action' => 'Deleted item',
+                'description' => 'Item deleted: ' . $item->cloth_name,
+                'table_name' => 'items',
+            ]);
+        });
+    }
+
     public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(\App\Models\Category::class, 'category_id');
@@ -79,17 +118,16 @@ class Item extends Model
 
     public function brand()
     {
-    return $this->belongsTo(Brand::class, 'brand_id');
+        return $this->belongsTo(Brand::class, 'brand_id');
     }
 
     public function material()
     {
-    return $this->belongsTo(Material::class, 'material_id');
+        return $this->belongsTo(Material::class, 'material_id');
     }
 
     public function condition()
     {
-    return $this->belongsTo(Condition::class, 'condition_id');
+        return $this->belongsTo(Condition::class, 'condition_id');
     }
-
 }

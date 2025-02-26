@@ -8,27 +8,30 @@ class Log extends Model
 {
     public $table = 'logs';
 
-    public $fillable = [
+    protected $fillable = [
         'user_id',
+        'item_id',
+        'category',
         'action',
+        'description',
         'table_name'
     ];
 
     protected $casts = [
+        'category' => 'string',
         'action' => 'string',
+        'description' => 'string',
         'table_name' => 'string'
     ];
 
-    public static array $rules = [
-        'user_id' => 'nullable',
-        'action' => 'nullable|string|max:100',
-        'table_name' => 'nullable|string|max:100',
-        'created_at' => 'nullable',
-        'updated_at' => 'nullable'
-    ];
-
-    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function user()
     {
         return $this->belongsTo(\App\Models\User::class, 'user_id');
     }
+
+    public function item()
+    {
+        return $this->belongsTo(\App\Models\Item::class, 'item_id');
+    }
 }
+
