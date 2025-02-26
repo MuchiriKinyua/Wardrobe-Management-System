@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 25, 2025 at 07:32 PM
+-- Generation Time: Feb 26, 2025 at 12:16 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -39,7 +39,13 @@ CREATE TABLE `brands` (
 --
 
 INSERT INTO `brands` (`id`, `full_name`, `created_at`, `updated_at`) VALUES
-(1, 'Italian', '2025-02-25 15:08:56', '2025-02-25 15:08:56');
+(1, 'Brioni', '2025-02-25 15:08:56', '2025-02-26 04:52:43'),
+(2, 'Hugo', '2025-02-26 04:52:53', '2025-02-26 04:52:53'),
+(3, 'Tom Ford', '2025-02-26 04:53:04', '2025-02-26 04:53:04'),
+(4, 'Brook Brothers', '2025-02-26 04:53:14', '2025-02-26 04:53:14'),
+(5, 'Armani', '2025-02-26 04:53:26', '2025-02-26 04:53:26'),
+(6, 'Burberry', '2025-02-26 04:53:38', '2025-02-26 04:53:38'),
+(7, 'Ralph Lauren', '2025-02-26 04:54:07', '2025-02-26 04:54:07');
 
 -- --------------------------------------------------------
 
@@ -59,7 +65,13 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `full_name`, `created_at`, `updated_at`) VALUES
-(1, 'abc', '2025-02-25 13:22:30', '2025-02-25 13:22:30');
+(1, 'Informal', '2025-02-25 13:22:30', '2025-02-26 05:03:45'),
+(2, 'Black Lounge', '2025-02-26 05:02:35', '2025-02-26 05:04:16'),
+(3, 'Buckskins', '2025-02-26 05:02:42', '2025-02-26 05:04:42'),
+(4, 'Demob', '2025-02-26 05:04:56', '2025-02-26 05:04:56'),
+(5, 'Drape', '2025-02-26 05:05:10', '2025-02-26 05:05:10'),
+(6, 'Ethiopian', '2025-02-26 05:05:28', '2025-02-26 05:05:28'),
+(7, 'Kariba', '2025-02-26 05:05:39', '2025-02-26 05:05:39');
 
 -- --------------------------------------------------------
 
@@ -79,7 +91,9 @@ CREATE TABLE `conditions` (
 --
 
 INSERT INTO `conditions` (`id`, `full_name`, `created_at`, `updated_at`) VALUES
-(1, 'New', '2025-02-25 15:09:46', '2025-02-25 15:09:46');
+(1, 'New', '2025-02-25 15:09:46', '2025-02-25 15:09:46'),
+(2, 'Used', '2025-02-26 05:01:00', '2025-02-26 05:01:00'),
+(3, 'Damaged', '2025-02-26 05:01:07', '2025-02-26 05:01:07');
 
 -- --------------------------------------------------------
 
@@ -126,6 +140,14 @@ CREATE TABLE `favorites` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `favorites`
+--
+
+INSERT INTO `favorites` (`id`, `clothing_item_id`, `created_at`, `updated_at`) VALUES
+(2, 20, '2025-02-26 07:29:24', '2025-02-26 07:29:24'),
+(3, 27, '2025-02-26 07:29:29', '2025-02-26 07:29:29');
+
 -- --------------------------------------------------------
 
 --
@@ -135,9 +157,18 @@ CREATE TABLE `favorites` (
 CREATE TABLE `histories` (
   `id` int(11) NOT NULL,
   `clothing_item_id` int(11) DEFAULT NULL,
+  `notes` varchar(600) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `histories`
+--
+
+INSERT INTO `histories` (`id`, `clothing_item_id`, `notes`, `created_at`, `updated_at`) VALUES
+(3, 20, 'Was Ironed over the weekend', '2025-02-26 07:30:05', '2025-02-26 07:30:05'),
+(4, 27, 'Was repaired over the left shoulder', '2025-02-26 07:30:42', '2025-02-26 07:30:42');
 
 -- --------------------------------------------------------
 
@@ -152,20 +183,27 @@ CREATE TABLE `items` (
   `cloth_name` varchar(100) DEFAULT NULL,
   `color` varchar(100) DEFAULT NULL,
   `size` varchar(100) DEFAULT NULL,
-  `brand` varchar(100) DEFAULT NULL,
-  `material` varchar(100) DEFAULT NULL,
   `day` varchar(255) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `brand_id` int(11) DEFAULT NULL,
+  `condition_id` int(11) DEFAULT NULL,
+  `material_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `items`
 --
 
-INSERT INTO `items` (`id`, `user_id`, `category_id`, `cloth_name`, `color`, `size`, `brand`, `material`, `day`, `image`, `created_at`, `updated_at`) VALUES
-(6, 1, 1, 'Suit', 'green', '10', 'Italian', 'Sleek', 'Tuesday', 'images/0neEDnAbLKkHnSqS0mShSMkK4bnGDCxFw0Xz22CG.jpg', '2025-02-25 15:32:20', '2025-02-25 15:32:20');
+INSERT INTO `items` (`id`, `user_id`, `category_id`, `cloth_name`, `color`, `size`, `day`, `image`, `created_at`, `updated_at`, `brand_id`, `condition_id`, `material_id`) VALUES
+(20, 1, 2, 'Black Suit', 'Black', '10', 'Monday', 'images/m0AOulfHUFdUakDRyFjNhnczBpS3ymFfAuasRdy4.jpg', '2025-02-26 07:02:52', '2025-02-26 08:01:01', 1, 1, 1),
+(23, 1, 3, 'Green Suit', 'Green', '10', 'Tuesday', 'images/8sNhx9pL7cGyltWRfPxB8uvUf7rchUfnQZ9pDkDp.jpg', '2025-02-26 07:16:58', '2025-02-26 07:31:24', 2, 1, 2),
+(24, 1, 4, 'Red Suit', 'Red', '10', 'Wednesday', 'images/kHUp6w9bTX6HAKSVTY8g7kkhmkIajwcAUN7mWp0y.jpg', '2025-02-26 07:17:38', '2025-02-26 08:14:20', 3, 1, 3),
+(25, 1, 5, 'Indigo Suit', 'Indigo', '10', 'Thursday', 'images/nPYNxchVNgGWgRw3iLkm9kb0MY6cSyoCf6Eq7m9j.jpg', '2025-02-26 07:19:11', '2025-02-26 07:31:40', 5, NULL, 4),
+(26, 1, 6, 'Blue Suit', 'Blue', '10', 'Friday', 'images/gOqo3N0di1vLaheGcL8uo9lDOPCCI9CGqNaXYXub.jpg', '2025-02-26 07:19:54', '2025-02-26 07:31:52', 6, 1, 6),
+(27, 1, 1, 'White Tuxedo', 'White', '11', 'Saturday', 'images/nDIdulW5CPtGkvYCzaa7th4BQbvfRSQfhYv0u5cO.jpg', '2025-02-26 07:21:41', '2025-02-26 07:32:01', 7, 2, 7),
+(28, 1, 7, 'Grey Tuxedo', 'Grey', '11', 'Sunday', 'images/fJHXRlxoNnuxvIxOhF9sIMegOSghwUO9GOBbXQGj.jpg', '2025-02-26 07:22:28', '2025-02-26 07:32:18', 7, 2, 7);
 
 -- --------------------------------------------------------
 
@@ -184,6 +222,15 @@ CREATE TABLE `laundries` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `laundries`
+--
+
+INSERT INTO `laundries` (`id`, `user_id`, `clothing_item_id`, `washed_at`, `detergent_used`, `notes`, `created_at`, `updated_at`) VALUES
+(5, 1, 20, '2025-02-26 13:34:45', 'Omo', 'Neatly done', '2025-02-26 07:34:45', '2025-02-26 07:34:45'),
+(6, 1, 23, '2025-02-26 13:35:17', 'Omo', 'Was ironed as expected', '2025-02-26 07:35:17', '2025-02-26 07:35:17'),
+(7, 1, 24, '2025-02-26 13:36:02', 'Geisha', 'Was not folded properly', '2025-02-26 07:36:02', '2025-02-26 07:36:02');
+
 -- --------------------------------------------------------
 
 --
@@ -193,11 +240,24 @@ CREATE TABLE `laundries` (
 CREATE TABLE `logs` (
   `id` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
+  `item_id` int(11) DEFAULT NULL,
+  `category` enum('Add','Update','Delete','Wear','Wash') NOT NULL,
   `action` varchar(100) DEFAULT NULL,
+  `description` text DEFAULT NULL,
   `table_name` varchar(100) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `logs`
+--
+
+INSERT INTO `logs` (`id`, `user_id`, `item_id`, `category`, `action`, `description`, `table_name`, `created_at`, `updated_at`) VALUES
+(1, 1, 20, 'Update', 'Updated item', 'Item updated: Suit', 'items', '2025-02-26 08:00:08', '2025-02-26 08:00:08'),
+(2, 1, 20, 'Update', 'Updated item', 'Item updated: Black Suit', 'items', '2025-02-26 08:01:01', '2025-02-26 08:01:01'),
+(3, 1, 24, 'Update', 'Updated item', 'Item updated: Suit', 'items', '2025-02-26 08:13:47', '2025-02-26 08:13:47'),
+(4, 1, 24, 'Update', 'Updated item', 'Item updated: Red Suit', 'items', '2025-02-26 08:14:20', '2025-02-26 08:14:20');
 
 -- --------------------------------------------------------
 
@@ -217,7 +277,13 @@ CREATE TABLE `materials` (
 --
 
 INSERT INTO `materials` (`id`, `full_name`, `created_at`, `updated_at`) VALUES
-(1, 'Sleek', '2025-02-25 15:09:27', '2025-02-25 15:09:27');
+(1, 'Silk', '2025-02-25 15:09:27', '2025-02-26 04:55:07'),
+(2, 'Wool', '2025-02-26 04:55:14', '2025-02-26 04:55:14'),
+(3, 'Cotton', '2025-02-26 04:55:22', '2025-02-26 04:55:22'),
+(4, 'Linen', '2025-02-26 04:55:36', '2025-02-26 04:55:36'),
+(5, 'Velvet', '2025-02-26 04:55:45', '2025-02-26 04:55:45'),
+(6, 'Velour', '2025-02-26 04:56:00', '2025-02-26 04:56:00'),
+(7, 'Corduroy', '2025-02-26 04:56:18', '2025-02-26 04:56:18');
 
 -- --------------------------------------------------------
 
@@ -271,8 +337,7 @@ CREATE TABLE `model_has_roles` (
 --
 
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
-(6, 'App\\Models\\User', 1),
-(7, 'App\\Models\\User', 1);
+(3, 'App\\Models\\User', 1);
 
 -- --------------------------------------------------------
 
@@ -287,6 +352,16 @@ CREATE TABLE `occassions` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `occassions`
+--
+
+INSERT INTO `occassions` (`id`, `full_name`, `created_at`, `updated_at`) VALUES
+(1, 'Casual', '2025-02-26 05:07:34', '2025-02-26 05:07:34'),
+(2, 'Business', '2025-02-26 05:07:44', '2025-02-26 05:07:44'),
+(3, 'Party', '2025-02-26 05:07:51', '2025-02-26 05:07:51'),
+(4, 'Weddings', '2025-02-26 05:07:58', '2025-02-26 05:07:58');
+
 -- --------------------------------------------------------
 
 --
@@ -300,6 +375,14 @@ CREATE TABLE `outfits` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `outfits`
+--
+
+INSERT INTO `outfits` (`id`, `user_id`, `full_name`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Casual', '2025-02-26 05:12:03', '2025-02-26 05:12:03'),
+(2, 1, 'Work', '2025-02-26 05:43:13', '2025-02-26 05:43:13');
 
 -- --------------------------------------------------------
 
@@ -537,6 +620,19 @@ CREATE TABLE `purchases` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `purchases`
+--
+
+INSERT INTO `purchases` (`id`, `user_id`, `clothing_item_id`, `price`, `purchased_at`, `store`, `created_at`, `updated_at`) VALUES
+(3, 1, 26, '3,500', 'Neklesha', 'Nairobi', '2025-02-26 07:37:07', '2025-02-26 07:37:07'),
+(4, 1, 23, '4,500', 'Think Twice', 'Thika', '2025-02-26 07:37:36', '2025-02-26 07:37:36'),
+(5, 1, 25, '5,000', 'Think Twice', 'Umoja', '2025-02-26 07:38:00', '2025-02-26 07:38:00'),
+(7, 1, 28, '4,000', 'Gikomba Ndogo', 'Pipeline', '2025-02-26 07:38:54', '2025-02-26 07:38:54'),
+(8, 1, 27, '5,000', 'Gikomba Ndogo', 'Pipeline', '2025-02-26 07:39:21', '2025-02-26 07:39:21'),
+(9, 1, 20, '3,200', 'Think Twice', 'Nairobi', '2025-02-26 07:41:07', '2025-02-26 07:41:07'),
+(10, 1, 24, '7,000', 'Gikomba', 'Nairobi', '2025-02-26 07:41:41', '2025-02-26 07:41:41');
+
 -- --------------------------------------------------------
 
 --
@@ -556,11 +652,8 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
-(1, 'super-admin', 'web', '2024-11-12 02:05:03', '2024-11-12 02:05:03'),
-(3, 'admin', 'web', '2024-11-12 02:05:20', '2024-11-12 02:05:20'),
-(4, 'financial accountant', 'web', '2024-11-12 02:05:25', '2024-11-12 02:05:25'),
-(6, 'Intern', 'web', '2024-12-04 10:55:09', '2024-12-04 10:56:32'),
-(7, 'head of department', 'web', '2024-12-10 15:46:24', '2024-12-10 15:46:24');
+(1, 'super admin', 'web', '2024-11-12 02:05:03', '2025-02-26 07:33:45'),
+(3, 'admin', 'web', '2024-11-12 02:05:20', '2024-11-12 02:05:20');
 
 -- --------------------------------------------------------
 
@@ -579,10 +672,8 @@ CREATE TABLE `role_has_permissions` (
 
 INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (1, 1),
-(1, 7),
 (2, 1),
 (2, 3),
-(2, 7),
 (3, 1),
 (3, 3),
 (4, 1),
@@ -745,7 +836,6 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (85, 3),
 (86, 1),
 (86, 3),
-(86, 6),
 (87, 1),
 (87, 3),
 (88, 1),
@@ -764,21 +854,18 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (94, 3),
 (95, 1),
 (95, 3),
-(95, 6),
 (96, 1),
 (96, 3),
 (97, 1),
 (97, 3),
 (98, 1),
 (98, 3),
-(98, 6),
 (99, 1),
 (99, 3),
 (100, 1),
 (100, 3),
 (101, 1),
 (101, 3),
-(101, 6),
 (102, 1),
 (102, 3),
 (103, 1),
@@ -797,14 +884,12 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (109, 3),
 (110, 1),
 (110, 3),
-(110, 6),
 (111, 1),
 (111, 3),
 (112, 1),
 (112, 3),
 (113, 1),
 (113, 3),
-(113, 6),
 (114, 1),
 (114, 3),
 (115, 1),
@@ -817,7 +902,6 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (118, 3),
 (119, 1),
 (119, 3),
-(119, 6),
 (120, 1),
 (120, 3),
 (121, 1),
@@ -838,7 +922,6 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (128, 3),
 (129, 1),
 (129, 3),
-(129, 6),
 (130, 1),
 (130, 3),
 (131, 1),
@@ -928,6 +1011,14 @@ CREATE TABLE `tags` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tags`
+--
+
+INSERT INTO `tags` (`id`, `user_id`, `full_name`, `created_at`, `updated_at`) VALUES
+(2, 1, 'Formal', '2025-02-26 05:32:35', '2025-02-26 05:32:35'),
+(3, 1, 'Winter', '2025-02-26 05:42:52', '2025-02-26 05:42:52');
+
 -- --------------------------------------------------------
 
 --
@@ -950,7 +1041,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@gmail.com', NULL, '$2y$12$YO3u/320moCweDvXIbd9MuR.3zp8.3HKc570yATbfO7GWn5EmLY.i', NULL, '2025-02-24 10:46:03', '2025-02-24 10:46:03');
+(1, 'admin', 'admin@gmail.com', NULL, '$2y$12$Jt/kGan52zDizK3R9xt49OMXJhgpi6Tj9bLmaH5GWZvc.hnR9sgH.', NULL, '2025-02-24 10:46:03', '2025-02-26 07:33:53');
 
 --
 -- Indexes for dumped tables
@@ -1016,7 +1107,8 @@ ALTER TABLE `laundries`
 --
 ALTER TABLE `logs`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_logs_users` (`user_id`);
+  ADD KEY `fk_logs_users` (`user_id`),
+  ADD KEY `fk_logs_items` (`item_id`);
 
 --
 -- Indexes for table `materials`
@@ -1134,19 +1226,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `conditions`
 --
 ALTER TABLE `conditions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -1158,37 +1250,37 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `favorites`
 --
 ALTER TABLE `favorites`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `histories`
 --
 ALTER TABLE `histories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `laundries`
 --
 ALTER TABLE `laundries`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `materials`
 --
 ALTER TABLE `materials`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -1200,13 +1292,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `occassions`
 --
 ALTER TABLE `occassions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `outfits`
 --
 ALTER TABLE `outfits`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `permissions`
@@ -1224,7 +1316,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `purchases`
 --
 ALTER TABLE `purchases`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -1242,7 +1334,7 @@ ALTER TABLE `sizes`
 -- AUTO_INCREMENT for table `tags`
 --
 ALTER TABLE `tags`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -1278,6 +1370,7 @@ ALTER TABLE `laundries`
 -- Constraints for table `logs`
 --
 ALTER TABLE `logs`
+  ADD CONSTRAINT `fk_logs_items` FOREIGN KEY (`item_id`) REFERENCES `items` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_logs_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --

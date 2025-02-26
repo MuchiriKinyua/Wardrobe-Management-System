@@ -57,28 +57,23 @@
     <section class="container mt-5">
     <div class="row">
         @php
-            $outfits = [
-                'Monday' => 'monday.jpg',
-                'Tuesday' => 'tuesday.jpg',
-                'Wednesday' => 'wednesday.jpg',
-                'Thursday' => 'thursday.jpg',
-                'Friday' => 'friday.jpg',
-                'Saturday' => 'saturday.jpg',
-                'Sunday' => 'sunday.jpg'
-            ];
+            $items = \App\Models\Item::whereNotNull('day')->get()->groupBy('day');
         @endphp
 
-        @foreach($outfits as $day => $image)
-            <div class="col-md-4 mb-4">
-                <div class="card outfit-card">
-                    <img height="400px" src="{{ asset('img/' . $image) }}" class="card-img-top" alt="{{ $day }} Outfit">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">{{ $day }} Outfit</h5>
-                        <p class="card-text">Choose a stylish look for {{ $day }}.</p>
-                        <a href="{{ url('/' . strtolower($day)) }}" class="btn btn-primary">View Options</a>
+        @foreach(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] as $day)
+            @if(isset($items[$day]))
+                @foreach($items[$day] as $item)
+                    <div class="col-md-4 mb-4">
+                        <div class="card outfit-card">
+                            <img height="400px" src="{{ asset('storage/' . $item->image) }}" class="card-img-top" alt="{{ $day }} Outfit">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">{{ $item->cloth_name }} for {{ $day }}</h5>
+                                <p class="card-text">Color: {{ $item->color }}, Size: {{ $item->size }}</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                @endforeach
+            @endif
         @endforeach
     </div>
 </section>
