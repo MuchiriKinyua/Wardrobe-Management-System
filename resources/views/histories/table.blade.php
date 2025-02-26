@@ -4,6 +4,7 @@
             <thead>
             <tr>
                 <th>Clothing Item</th>
+                <th>Notes</th>
                 <th colspan="3">Action</th>
             </tr>
             </thead>
@@ -11,6 +12,7 @@
             @foreach($histories as $history)
                 <tr>
                     <td>{{ optional($history->item)->cloth_name ?? 'N/A' }}</td>
+                    <td>{{ $history->notes }}</td>
                     <td  style="width: 120px">
                         {!! Form::open(['route' => ['histories.destroy', $history->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>

@@ -40,7 +40,7 @@ class PurchaseController extends AppBaseController
         $users = User::pluck('name', 'id');
         $clothing_items = Item::pluck('cloth_name', 'id');
 
-        return view('laundries.create', compact('users', 'clothing_items'));
+        return view('purchases.create', compact('users', 'clothing_items'));
     }
 
     /**

@@ -15,7 +15,7 @@
             @foreach($purchases as $purchase)
                 <tr>
                     <td>{{ optional($purchase->user)->name ?? 'N/A' }}</td>
-                    <td>{{ $purchase->clothing_item_id }}</td>
+                    <td>{{ optional($purchase->item)->cloth_name ?? 'N/A' }}</td>
                     <td>{{ $purchase->price }}</td>
                     <td>{{ $purchase->purchased_at }}</td>
                     <td>{{ $purchase->store }}</td>

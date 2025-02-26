@@ -9,7 +9,8 @@ class History extends Model
     public $table = 'histories';
 
     public $fillable = [
-        'clothing_item_id'
+        'clothing_item_id',
+        'notes'
     ];
 
     protected $casts = [
@@ -18,6 +19,7 @@ class History extends Model
 
     public static array $rules = [
         'clothing_item_id' => 'nullable|exists:items,id',
+        'notes' => 'nullable|string|max:600',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'
     ];

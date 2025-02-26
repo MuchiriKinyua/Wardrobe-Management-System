@@ -11,6 +11,7 @@ use App\Models\Condition;
 use App\Models\Brand;
 use App\Http\Requests\UpdateItemRequest;
 use App\Http\Controllers\AppBaseController;
+use Illuminate\Support\Facades\Storage;
 use App\Repositories\ItemRepository;
 use Illuminate\Http\Request;
 use Flash;
